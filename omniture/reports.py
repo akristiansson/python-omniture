@@ -69,8 +69,11 @@ class Report(object):
         self.elements = Value.list('elements', report['elements'], self.suite, 'name', 'id')
         self.period = str(report['period'])
         self.type = str(report['type'])
-
-        segments = report.get('segments')
+        
+        try:
+            segments = report.get('segments')
+        except InvalidReportError:
+            pass
         if segments:
             self.segments = []
             for s in segments:
@@ -79,8 +82,6 @@ class Report(object):
                 except KeyError as e:
                     warnings.warn(repr(e))
                     self.segments.append(s['id'])
-                except:
-                    pass
         else:
             self.segments = None
 
