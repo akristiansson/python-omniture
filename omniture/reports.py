@@ -73,7 +73,10 @@ class Report(object):
         try:
             segments = report.get('segments')
         except InvalidReportError:
+            print('Fuck off')
             pass
+        except:
+            print('Fuck off 2')
         if segments:
             self.segments = []
             for s in segments:
