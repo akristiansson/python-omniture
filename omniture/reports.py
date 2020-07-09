@@ -79,6 +79,8 @@ class Report(object):
                 except KeyError as e:
                     warnings.warn(repr(e))
                     self.segments.append(s['id'])
+                except:
+                    pass
         else:
             self.segments = None
 
